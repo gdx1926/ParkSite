@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8" />
+        <title>OC-TEAM PARKING SYSTEM</title>
+</head>
+
+<body>
+<div> This is an initial DEMO from the OC-team, please contact littletiger1926@gmail.com for any questions you have.</div>
+
+<!-- List of uploaded documents -->
+{% if lastDocument %}
+<ul>
+
+        <li>
+                <img src="{{ lastDocument.docfile.url }}" alt="{{ lastDocument.docfile.name }}" height="500"/><p/>
+                <a target="_blank" href="{{ lastDocument.docfile.url }}">{{ lastDocument.docfile.name }}</a>
+                <p>
+                        This is a {{color}} car form the state of {{region}}, and it's plate number is {{plate}};
+                </p></li>
+
+</ul>
+{% else %}
+<p>No documents.</p>
+{% endif %}
+
+<!-- Upload form. Note enctype attribute! -->
+<form action="" method="POST" enctype="multipart/form-data" >
+        <p>{{ form.non_field_errors }}</p>
+        <p>{{ form.docfile.label_tag }} </p>
+        <p>
+                {{ form.docfile.errors }}
+                {{ form.docfile }}
+        </p>
+        <p><input type="submit" value="Upload" /></p>
+</form>
+
+</body>
+
+</html>
